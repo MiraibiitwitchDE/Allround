@@ -1,0 +1,14 @@
+name: Allround
+version: '${version}'
+main: net.mira.allround.Main
+api-version: 1.19
+authors: [ Miraibii ]
+description: Plugin that makes fun fun fun
+
+commands:
+  sethome:
+    description: Setzt den Heimatpunkt des Spielers
+    usage: /sethome
+  home:
+    description: Teleportiert den Spieler zum Heimatpunkt
+    usage: /home
