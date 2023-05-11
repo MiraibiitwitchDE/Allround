@@ -3,6 +3,7 @@ package net.mira.allround;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 public class SetHomeCommand implements CommandExecutor {
@@ -15,17 +16,19 @@ public class SetHomeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("sethome")) {
-            if (!(sender instanceof Player)) {
-                sender.sendMessage("Dieser Befehl kann nur von einem Spieler verwendet werden.");
-                return true;
-            }
-
-            Player player = (Player) sender;
-            homeManager.setHomeLocation(player, player.getLocation());
+        if (sender instanceof ConsoleCommandSender) {
+            sender.sendMessage("Dieser Befehl kann nur von einem Spieler verwendet werden.");
             return true;
         }
 
-        return false;
+        if (sender instanceof Player player) {
+            sender.sendMessage("Dieser Befehl kann nur von einem Spieler verwendet werden.");
+            return true;
+        }
+
+        Player player = (Player) sender;
+        homeManager.setHomeLocation(player, player.getLocation());
+        return true;
+
     }
 }
