@@ -1,9 +1,13 @@
 package net.mira.allround;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+
+import java.io.Console;
 
 public class HomeCommand implements CommandExecutor {
 
@@ -15,22 +19,20 @@ public class HomeCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Console || sender instanceof CommandBlock) {
+        if (sender instanceof ConsoleCommandSender) {
             sender.sendMessage("Dieser Befehl kann nur von einem Spieler verwendet werden.");
             return true;
         }
-        
-        if (sender instanceof Player player) {
-        if (command.getName().equalsIgnoreCase("home")) {
 
+        if (sender instanceof Player player) {
             if (homeManager.hasHomeLocation(player)) {
                 player.teleport(homeManager.getHomeLocation(player));
-                player.sendMessage("Willkommen zuhause!");
-            } else {
-                player.sendMessage("Du hast noch keinen Heimatpunkt gesetzt.");
+                player.sendMessage(Component.text("Willkommen zuhause!"));
+                return true;
             }
-            return true;
-        }
+
+            player.sendMessage(Component.text("Du hast noch keinen Heimatpunkt gesetzt."));
+
         }
         return true;
     }
