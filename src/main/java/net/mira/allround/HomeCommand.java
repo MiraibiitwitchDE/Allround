@@ -7,8 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-import java.io.Console;
-
 public class HomeCommand implements CommandExecutor {
 
     private HomeManager homeManager;
