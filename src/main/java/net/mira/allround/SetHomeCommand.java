@@ -1,6 +1,7 @@
 package net.mira.allround;
 
 import net.kyori.adventure.text.Component;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,13 +19,13 @@ public class SetHomeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage(Component.text("§cDieser Befehl kann nur von einem Spieler verwendet werden."));
+            sender.sendMessage(Component.text(ChatColor.RED + "This command can only be used by one player!"));
             return true;
         }
 
         if (sender instanceof Player player) {
             homeManager.setHomeLocation(player, player.getLocation());
-            player.sendMessage(Component.text("§2Heimatpunkt wurde gesetzt."));
+            player.sendMessage(Component.text(ChatColor.GREEN + "Home point has been set!"));
             return true;
         }
 

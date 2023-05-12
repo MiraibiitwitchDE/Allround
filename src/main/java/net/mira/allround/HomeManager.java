@@ -2,6 +2,7 @@ package net.mira.allround;
 
 import net.kyori.adventure.text.Component;
 import net.mira.allround.Utils.ConfigFile;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -16,7 +17,7 @@ public class HomeManager {
     public void setHomeLocation(Player player, Location location) {
         plugin.config.set(player.getUniqueId().toString(), location);
         ConfigFile.saveConfig(plugin.file, plugin.config);
-        player.sendMessage(Component.text("§2Heimatpunkt gesetzt!"));
+        player.sendMessage(Component.text(ChatColor.GREEN + "Home point has been set!"));
     }
 
     public Location getHomeLocation(Player player) {

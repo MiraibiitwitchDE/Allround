@@ -19,13 +19,13 @@ public class DeleteHomeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage("Dieser Befehl kann nur von einem Spieler verwendet werden.");
+            sender.sendMessage(ChatColor.RED + "This command can only be used by one player!");
             return true;
         }
 
         if (sender instanceof Player player) {
             homeManager.delHomeLocation(player);
-            player.sendMessage(Component.text("§cDein Heimatpunkt wurde entfernt!"));
+            player.sendMessage(Component.text(ChatColor.RED + "Your home point has been removed!"));
             return true;
         }
 
