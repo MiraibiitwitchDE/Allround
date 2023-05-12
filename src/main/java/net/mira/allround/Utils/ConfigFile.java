@@ -7,7 +7,6 @@ import java.io.File;
 
 public class ConfigFile {
 
-    //create a function that i not must init the class
     public static File getFile(Allround plugin) {
         return new File(plugin.getDataFolder(), "homes.yml");
     }
