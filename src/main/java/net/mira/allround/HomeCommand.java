@@ -26,7 +26,7 @@ public class HomeCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             if (homeManager.hasHomeLocation(player)) {
                 player.teleport(homeManager.getHomeLocation(player));
-                player.sendMessage(Component.text("Willkommen zuhause!"));
+                player.sendMessage(Component.text(ChatColor.YELLOW + "Welcome Home! " + player.getName()));
                 return true;
             }
 

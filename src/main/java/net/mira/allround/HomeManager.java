@@ -17,7 +17,6 @@ public class HomeManager {
     public void setHomeLocation(Player player, Location location) {
         plugin.config.set(player.getUniqueId().toString(), location);
         ConfigFile.saveConfig(plugin.file, plugin.config);
-        player.sendMessage(Component.text(ChatColor.GREEN + "Home point has been set!"));
     }
 
     public Location getHomeLocation(Player player) {
@@ -30,5 +29,9 @@ public class HomeManager {
 
     public boolean hasHomeLocation(Player player) {
         return plugin.config.contains(player.getUniqueId().toString());
+    }
+
+    public void reloadHomeLocations() {
+        plugin.reloadConfig();
     }
 }
