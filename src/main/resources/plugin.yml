@@ -7,9 +7,11 @@ description: Plugin that makes fun fun fun
 
 commands:
   sethome:
-    description: Setzt den Heimatpunkt des Spielers
+    description: Sets the home point of the player
     usage: /sethome
   home:
-    description: Teleportiert den Spieler zum Heimatpunkt
+    description: Teleports the player to the home point
     usage: /home
   delhome:
+    description: Delete your home
+    usage: /delhome
