@@ -12,3 +12,4 @@ commands:
   home:
     description: Teleportiert den Spieler zum Heimatpunkt
     usage: /home
+  test:
