@@ -1,14 +1,12 @@
 package net.mira.allround;
 
-import net.kyori.adventure.text.Component;
 import net.mira.allround.Utils.ConfigFile;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 public class HomeManager {
 
-    private Allround plugin;
+    Allround plugin;
 
     public HomeManager(Allround plugin) {
         this.plugin = plugin;
@@ -24,7 +22,9 @@ public class HomeManager {
     }
 
     public void delHomeLocation(Player player) {
-        ConfigFile.deleteKey(plugin.file, player.getUniqueId().toString());
+        String playerId = player.getUniqueId().toString();
+        ConfigFile.deleteKey(plugin.file, playerId);
+        plugin.config.set(playerId, null);
     }
 
     public boolean hasHomeLocation(Player player) {
@@ -32,6 +32,6 @@ public class HomeManager {
     }
 
     public void reloadHomeLocations() {
-        plugin.reloadConfig();
+        plugin.config = ConfigFile.getConfig(plugin.file);
     }
 }
