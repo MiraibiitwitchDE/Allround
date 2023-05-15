@@ -1,9 +1,10 @@
 package net.mira.allround.Utils;
 
-import net.mira.allround.Allround;
+import net.mira.allround.Allround;;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ConfigFile {
 
@@ -18,16 +19,19 @@ public class ConfigFile {
     public static void saveConfig(File file, YamlConfiguration config) {
         try {
             config.save(file);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    //create a delete function wich deletes a key
     public static void deleteKey(File file, String key) {
         YamlConfiguration config = getConfig(file);
         config.set(key, null);
         saveConfig(file, config);
+    }
+
+    public static YamlConfiguration reloadConfig(File file) {
+        return YamlConfiguration.loadConfiguration(file);
     }
 
 }
