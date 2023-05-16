@@ -24,7 +24,7 @@ public class HomeManager {
     public void delHomeLocation(Player player) {
         String playerId = player.getUniqueId().toString();
         ConfigFile.deleteKey(plugin.file, playerId);
-        plugin.config.set(playerId, null);
+        plugin.config.set(playerId, null); //RAM Fehler
     }
 
     public boolean hasHomeLocation(Player player) {

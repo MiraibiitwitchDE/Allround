@@ -15,19 +15,25 @@ import java.io.File;
 public class DeleteHomeCommand implements CommandExecutor {
 
     private HomeManager homeManager;
+    private String usage;
 
     public DeleteHomeCommand(HomeManager homeManager) {
         this.homeManager = homeManager;
+        this.usage = usage;
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage(ChatColor.RED + "Dieser Befehl kann nur von Spielern verwendet werden!");
+            sender.sendMessage(Component.text(ChatColor.RED + "Dieser Befehl kann nur von Spielern verwendet werden!"));
             return true;
         }
 
         if (sender instanceof Player player) {
+            if (args.length == 0 || !args[0].equalsIgnoreCase("del")) {
+                return false; // Invalid usage
+            }
+
             homeManager.delHomeLocation(player);
             player.sendMessage(Component.text(ChatColor.RED + "Dein Home-Punkt wurde entfernt!"));
             removeHomeFromConfig(player);

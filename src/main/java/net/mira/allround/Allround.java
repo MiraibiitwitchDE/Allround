@@ -22,9 +22,28 @@ public class Allround extends JavaPlugin {
 
         homeManager = new HomeManager(this);
 
-        getCommand("sethome").setExecutor(new SetHomeCommand(homeManager));
-        getCommand("home").setExecutor(new HomeCommand(homeManager));
-        getCommand("delhome").setExecutor(new DeleteHomeCommand(homeManager));
+        getCommand("home").setExecutor((sender, command, label, args) -> {
+            if (args.length == 0) {
+                // Handle invalid usage or display general information
+                return false;
+            }
+
+            String subCommand = args[0].toLowerCase();
+
+            switch (subCommand) {
+                case "set":
+                    return new SetHomeCommand(homeManager).onCommand(sender, command, label, args);
+                case "del":
+                    return new DeleteHomeCommand(homeManager).onCommand(sender, command, label, args);
+                case "tp":
+                    return new HomeCommand(homeManager).onCommand(sender, command, label, args);
+                default:
+                    // Handle unknown sub-command
+                    return false;
+            }
+        });
+
+        // Weitere Initialisierungen...
     }
 
     @Override

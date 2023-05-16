@@ -19,13 +19,17 @@ public class SetHomeCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage(Component.text(ChatColor.RED + "Dieser Befehl kann nur von Spielern verwendet werden!"));
+            sender.sendMessage(Component.text(ChatColor.RED + "This command can only be used by players!"));
             return true;
         }
 
         if (sender instanceof Player player) {
+            if (args.length == 0 || !args[0].equalsIgnoreCase("set")) {
+                return false; // Invalid usage
+            }
+
             homeManager.setHomeLocation(player, player.getLocation());
-            player.sendMessage(Component.text(ChatColor.GREEN + "Home-Punkt wurde gesetzt!"));
+            player.sendMessage(Component.text(ChatColor.GREEN + "Home point has been set!"));
 
             return true;
         }

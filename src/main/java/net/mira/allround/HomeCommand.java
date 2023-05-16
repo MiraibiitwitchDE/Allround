@@ -24,15 +24,16 @@ public class HomeCommand implements CommandExecutor {
         }
 
         if (sender instanceof Player player) {
-            if (homeManager.hasHomeLocation(player)) {
-                player.teleport(homeManager.getHomeLocation(player));
-                player.sendMessage(Component.text(ChatColor.YELLOW + "Welcome Home! " + player.getName()));
-                return true;
+            if (args.length > 0 && args[0].equalsIgnoreCase("tp")) {
+                if (homeManager.hasHomeLocation(player)) {
+                    player.teleport(homeManager.getHomeLocation(player));
+                    player.sendMessage(Component.text(ChatColor.YELLOW + "Welcome Home! " + player.getName()));
+                } else {
+                    player.sendMessage(Component.text(ChatColor.RED + "You haven't set a home location yet."));
+                }
             }
-
-            player.sendMessage(Component.text("Du hast noch keinen Heimatpunkt gesetzt."));
-
         }
+
         return true;
     }
 }
