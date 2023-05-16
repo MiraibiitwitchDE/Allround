@@ -8,3 +8,7 @@ description: Plugin that makes fun fun fun
 commands:
   home:
     usage: use one of the following commands /home <set> <del> <tp>
+  msg:
+    usage: use msg <player> <message> for a private message!
+  global:
+    usage: use global <message> to reach every player far far away!

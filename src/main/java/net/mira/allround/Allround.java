@@ -21,10 +21,10 @@ public class Allround extends JavaPlugin {
         config = ConfigFile.getConfig(file);
 
         homeManager = new HomeManager(this);
-
+        getCommand("msg").setExecutor(new PrivateMessageCommand());
+        getCommand("global").setExecutor(new GlobalMessageCommand());
         getCommand("home").setExecutor((sender, command, label, args) -> {
             if (args.length == 0) {
-                // Handle invalid usage or display general information
                 return false;
             }
 
