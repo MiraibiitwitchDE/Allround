@@ -31,7 +31,7 @@ public class DeleteHomeCommand implements CommandExecutor {
 
         if (sender instanceof Player player) {
             if (args.length == 0 || !args[0].equalsIgnoreCase("del")) {
-                return false; // Invalid usage
+                return false;
             }
 
             homeManager.delHomeLocation(player);
